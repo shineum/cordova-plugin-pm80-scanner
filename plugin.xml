@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://cordova.apache.org/ns/plugins/1.0"
+           id="cordova-plugin-pm80-scanner"
+      version="0.0.1">
+    <name>PM80 Scanner</name>
+    <description>PM80 Scanner</description>
+    <license>MIT</license>
+    <keywords>cordova,barcode,qrcode,scanner,laser,pm80</keywords>
+    <repo>https://github.com/shineum/cordova-plugin-pm80-scanner.git</repo>
+
+    <js-module src="www/pm80scanner.js" name="PM80Scanner">
+        <clobbers target="cordova.plugins.pm80scanner" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="PM80Scanner">
+                <param name="android-package" value="com.shineum.PM80Scanner"/>
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+          <receiver
+              android:name="com.shineum.PM80Scanner$ScanResultReceiver"
+              android:enabled="true"
+              android:exported="false"
+              android:priority="0" >
+              <intent-filter>
+                  <action android:name="device.common.USERMSG" />
+              </intent-filter>
+          </receiver>
+        </config-file>
+        <source-file src="src/android/device.sdk.jar" target-dir="libs"/>
+        <source-file src="src/android/PM80Scanner.java" target-dir="src/com/shineum" />
+    </platform>
+</plugin>
