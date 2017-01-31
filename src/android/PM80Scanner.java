@@ -59,6 +59,8 @@ public class PM80Scanner extends CordovaPlugin {
           this.callbackContext = null;
         }
         mScanner.aDecodeSetTriggerOn(0);
+      } else if (action.equals("beep")) {
+        mScanner.aDecodeSetBeepEnable(args.getInt(0));
       } else {
         return false;
       }

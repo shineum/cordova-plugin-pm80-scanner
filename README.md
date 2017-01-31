@@ -11,11 +11,11 @@ cordova plugin add cordova-plugin-pm80-scanner
 
 # Usages
 
-### 1.Scan
+### 1. Scan
 
 ```javascript
 cordova.plugins.pm80scanner.scan(successCallback, errorCallback);
-// then the device is ready to scan until the code is read or user cancel.
+// then the scanner is ready to read codes.
 
 var successCallback = function(result) {
   console.log(result);
@@ -27,11 +27,19 @@ var errorCallback = function(error) {
 
 ```
 
-### 2.Cancel
+### 2. Cancel
 
 ```javascript
 cordova.plugins.pm80scanner.cancel();
-// then scanner is off and error callback will be fired with error message of "USER_CANCEL".
+// then the scanner is off and error callback will be fired with error message of "USER_CANCEL".
+
+```
+
+### 3. Beep
+
+```javascript
+cordova.plugins.pm80scanner.beep(mode);
+// to control beep when the scanner reads the codes. mode : true or false
 
 ```
 

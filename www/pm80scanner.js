@@ -32,5 +32,12 @@
           exec(null, null, 'PM80Scanner', 'cancel', null);
     };
 
+    /**
+     * Beep.
+     */
+    Pm80Scanner.prototype.beep = function (mode) {
+          exec(null, null, 'PM80Scanner', 'beep', [mode ? 1 : 0]);
+    };
+
     var pm80Scanner = new Pm80Scanner();
     module.exports = pm80Scanner;
