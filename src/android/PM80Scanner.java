@@ -15,15 +15,15 @@ import device.common.DecodeResult;
 import device.common.ScanConst;
 import device.sdk.ScanManager;
 
+// import android.widget.Toast;
+
 public class PM80Scanner extends CordovaPlugin {
 
   private static ScanManager mScanner = new ScanManager();
   private static DecodeResult mDecodeResult = new DecodeResult();
   private static CallbackContext callbackContext = null;
-  // private static ScannerStateCallback scannerStateCallback = new ScannerStateCallback();
 
   static {
-    // mScanner.aRegisterDecodeStateCallback(scannerStateCallback);
     mScanner.aDecodeSetResultType(ScanConst.ResultType.DCD_RESULT_USERMSG);
     mScanner.aDecodeSetTriggerMode(ScanConst.TriggerMode.DCD_TRIGGER_MODE_ONESHOT);
     mScanner.aDecodeSetBeepEnable(0);   // 1 : on, 0 : off
@@ -32,6 +32,7 @@ public class PM80Scanner extends CordovaPlugin {
   public static class ScanResultReceiver extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {
+      // Toast.makeText(context, "Intent Detected.", Toast.LENGTH_LONG).show();
 			if (mScanner != null) {
 				mScanner.aDecodeGetResult(mDecodeResult.recycle());
         if (callbackContext != null) {
@@ -42,8 +43,9 @@ public class PM80Scanner extends CordovaPlugin {
           }
         }
 			} else {
-        if (callbackContext != null)
-          callbackContext.error("SCANNER_ERROR");
+          if (callbackContext != null) {
+              callbackContext.error("SCANNER_ERROR");
+          }
       }
 		}
 	}
@@ -61,6 +63,10 @@ public class PM80Scanner extends CordovaPlugin {
         mScanner.aDecodeSetTriggerOn(0);
       } else if (action.equals("beep")) {
         mScanner.aDecodeSetBeepEnable(args.getInt(0));
+      } else if (action.equals("set")) {
+        this.callbackContext = callbackContext;
+      } else if (action.equals("scan2")) {
+        mScanner.aDecodeSetTriggerOn(1);
       } else {
         return false;
       }

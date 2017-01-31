@@ -43,6 +43,14 @@ cordova.plugins.pm80scanner.beep(mode);
 
 ```
 
+### 4. Set
+
+```javascript
+cordova.plugins.pm80scanner.set(successCallback, errorCallback);
+// Setting callback functions to read code with side buttons.
+
+```
+
 # License
 
 MIT
