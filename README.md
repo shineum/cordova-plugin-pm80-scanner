@@ -66,11 +66,14 @@ cordova.plugins.pm80scanner.setTriggerMode(mode);
 // Available modes are:
 // cordova.plugins.pm80scanner.TRIGGER_MODE.ONESHOT
 // cordova.plugins.pm80scanner.TRIGGER_MODE.AUTO
-// cordova.plugins.pm80scanner.TRIGGER_MODE.CONTINUS
+// cordova.plugins.pm80scanner.TRIGGER_MODE.CONTINUOUS
 
 ```
 
 # history
+
+### 0.0.6
+- Typo correction on description
 
 ### 0.0.5
 - Support to change scanner trigger mode
