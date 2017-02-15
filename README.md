@@ -15,7 +15,7 @@ cordova plugin add cordova-plugin-pm80-scanner
 
 ```javascript
 cordova.plugins.pm80scanner.scan(successCallback, errorCallback);
-// then the scanner is ready to read codes.
+// then callbacks will be set and scanner will be ready.
 
 var successCallback = function(result) {
   console.log(result);
@@ -24,6 +24,12 @@ var successCallback = function(result) {
 var errorCallback = function(error) {
   console.log(error);
 }
+```
+
+
+```javascript
+cordova.plugins.pm80scanner.scan();
+// if you already set callbacks, calling scan() without parameters will work also.
 
 ```
 
@@ -43,13 +49,32 @@ cordova.plugins.pm80scanner.beep(mode);
 
 ```
 
-### 4. Set
+### 4. Set Callbacks
 
 ```javascript
 cordova.plugins.pm80scanner.set(successCallback, errorCallback);
 // Setting callback functions to read code with side buttons.
 
 ```
+
+### 5. Set Trigger Mode
+
+```javascript
+cordova.plugins.pm80scanner.setTriggerMode(mode);
+// Set scanner trigger mode.
+
+// Available modes are:
+// cordova.plugins.pm80scanner.TRIGGER_MODE.ONESHOT
+// cordova.plugins.pm80scanner.TRIGGER_MODE.AUTO
+// cordova.plugins.pm80scanner.TRIGGER_MODE.CONTINUS
+
+```
+
+# history
+
+### 0.0.5
+- Support to change scanner trigger mode
+
 
 # License
 
