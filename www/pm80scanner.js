@@ -41,9 +41,9 @@ Pm80Scanner.prototype.beep = function (mode) {
  */
 Pm80Scanner.prototype.set = function (successCallback, errorCallback) {
       exec(
-        function(result) {
+        function(resultObj) {
             try {
-              successCallback(result);
+              successCallback(resultObj.result, resultObj);
             } catch (err) {}
             pm80Scanner.set(successCallback, errorCallback);
         }

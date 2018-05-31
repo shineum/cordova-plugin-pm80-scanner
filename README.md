@@ -17,8 +17,9 @@ cordova plugin add cordova-plugin-pm80-scanner
 cordova.plugins.pm80scanner.scan(successCallback, errorCallback);
 // then callbacks will be set and scanner will be ready.
 
-var successCallback = function(result) {
-  console.log(result);
+var successCallback = function(result, metadata) {
+  // metadata.type
+  console.log(result, metadata);  
 }
 
 var errorCallback = function(error) {
@@ -71,6 +72,9 @@ cordova.plugins.pm80scanner.setTriggerMode(mode);
 ```
 
 # history
+
+### 0.0.8
+- Callback returns barcode types as metadata
 
 ### 0.0.6
 - Typo correction on description

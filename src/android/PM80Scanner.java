@@ -39,7 +39,12 @@ public class PM80Scanner extends CordovaPlugin {
           if (mDecodeResult.symName.equals("READ_FAIL")) {
               callbackContext.error("READ_FAIL");
           } else {
-              callbackContext.success(mDecodeResult.toString());
+            JSONObject json = new JSONObject();
+            try {
+              json.put("result", mDecodeResult.toString());
+              json.put("type", mDecodeResult.symName);
+            } catch (Exception e) {}
+            callbackContext.success(json);
           }
         }
 			} else {

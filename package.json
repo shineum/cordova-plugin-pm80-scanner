@@ -1,7 +1,7 @@
 {
     "name": "cordova-plugin-pm80-scanner",
     "description": "Laser scanner for PM80",
-    "version": "0.0.6",
+    "version": "0.0.8",
     "homepage": "https://github.com/shineum/cordova-plugin-pm80-scanner#readme",
     "repository": {
         "type": "git",
